@@ -102,7 +102,7 @@ I used the same Excalidraw to draw an entity relationship diagram: ![ERD](./app/
 A more detailed view can be found at: https://excalidraw.com/#json=xV65UtrBFz-0S5l1y3rgS,FmesD8ys3zkcZ3au7_Rhmg
 
 ### Project Management
-I used [this Jira board](https://louisejones.atlassian.net/jira/software/c/projects/MMHW/boards/1) to add in target start and end dates and time tracking estimates so I could check how realistic my original plans were.
+I used [this Jira board](https://louisejones.atlassian.net/jira/software/projects/MMHW/boards/2/) to add in target start and end dates and time tracking estimates so I could check how realistic my original plans were.
 
 ___
 ## Build/Code Process
@@ -118,6 +118,7 @@ ___
 
 ___
 ## Challenges
+
 
 ___
 ## Wins
@@ -136,7 +137,7 @@ ___
 
 
 
-## 
+## Suggestions from Rails
 * Ruby version
 
 * System dependencies
