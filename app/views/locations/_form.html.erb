@@ -1,0 +1,50 @@
+<%= form_for [current_user, @meeting, @location] do |f| %>
+    
+    <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+      <ul>
+        <% @location.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+    <div class="field">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+        <%= f.label :type, "Location Type" %>
+        <%= f.text_field :type %>
+    </div>
+
+    <div class="field">
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address %>
+    </div>
+
+    <div class="field">
+        <%= f.label :latitude, "Latitude" %>
+        <%= f.text_field :latitude %>
+    </div>
+
+    <div class="field">
+        <%= f.label :longitude, "Longitude" %>
+        <%= f.text_field :longitude %>
+    </div>
+
+    <div class="field">
+        <%= f.label :distance_from_halfway, "Distance from Halfway" %>
+        <%= f.text_field :distance_from_halfway %>
+    </div>
+
+    <div class="field">
+        <%= f.label :time_from_halfway, "Time from Halfway" %>
+        <%= f.text_field :time_from_halfway %>
+    </div>
+
+    <%= f.submit "Submit", :class => "button" %>
+<% end %>

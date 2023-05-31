@@ -1,5 +1,5 @@
 <h1><%= @meeting.name %> Locations</h1>
-  <%= link_to "New Location", new_location_path(:meeting_id => @meeting.id) %>
+  <%= link_to "New Location", new_user_meeting_location_path(current_user, @meeting) %>
   
   <br><br>
 
