@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meeting: one
+  location_type: MyString
+  location_name: MyString
+  address: MyString
+  latitude: 9.99
+  longitude: 9.99
+  distance_from_halfway: 1
+  time_from_halfway: 1
+
+two:
+  meeting: two
+  location_type: MyString
+  location_name: MyString
+  address: MyString
+  latitude: 9.99
+  longitude: 9.99
+  distance_from_halfway: 1
+  time_from_halfway: 1

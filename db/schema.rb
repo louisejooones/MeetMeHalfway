@@ -10,9 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_155005) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_104339) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locations", force: :cascade do |t|
+    t.bigint "meeting_id", null: false
+    t.string "location_type"
+    t.string "location_name"
+    t.string "address"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
+    t.integer "distance_from_halfway"
+    t.integer "time_from_halfway"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meeting_id"], name: "index_locations_on_meeting_id"
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "place_type"
+    t.string "transport_type"
+    t.integer "total_distance"
+    t.integer "total_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_meetings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_155005) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "locations", "meetings"
+  add_foreign_key "meetings", "users"
 end
