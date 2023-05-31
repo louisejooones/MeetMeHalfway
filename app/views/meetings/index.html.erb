@@ -1,0 +1,21 @@
+<h1>All the Meetings</h1>
+
+<table class="striped bordered">
+  <tr>
+    <th>Meeting</th>
+    <th>Place Type</th>
+    <th>Transport Type</th>
+    <th>Total Distance</th>
+    <th>Total Time</th>
+  </tr>
+
+  <% @meetings.each do |meeting| %>
+      <tr>
+        <td><%= link_to meeting.name, meeting_path(meeting) %></td>
+        <td><%= meeting.place_type %></td>
+        <td><%= meeting.transport_type %></td>
+        <td><%= meeting.total_distance %></td>
+        <td><%= meeting.total_time %></td>
+      </tr>
+  <% end %>
+</table>
