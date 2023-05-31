@@ -1,12 +1,12 @@
 class LocationsController < ApplicationController
     
-    before_action :set_meeting, only: [:new, :create]
+    before_action :set_meeting, only: [:index, :new, :create, :edit, :update, :destroy]
     before_action :set_location, only: [:show, :edit, :update, :destroy]
 
     def index
         @locations = @meeting.locations
     end
-
+    
     def show
     end
     
@@ -16,15 +16,20 @@ class LocationsController < ApplicationController
 
     def create
         @meeting.locations.create(location_params)
-        redirect_to @meeting
+        redirect_to user_meeting_path(location_params)
     end
 
     def edit
     end
 
+    def update        
+        @location.update(location_params)
+        redirect_to user_meeting_location_path(current_user, @meeting, @location)
+    end
+
     def destroy
         @location.destroy
-        redirect_to user_meetings_locations_path
+        redirect_to user_meeting_path(current_user, @meeting)
     end
 
     private
@@ -34,7 +39,7 @@ class LocationsController < ApplicationController
         end
 
         def set_location
-            @location = Location.find(params[:location_id])
+            @location = Location.find(params[:id])
         end
 
         def location_params

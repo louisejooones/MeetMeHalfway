@@ -1,4 +1,4 @@
-<%= form_for [current_user, @meeting] do |f| %>
+<%= form_with(model: [current_user, @meeting]) do |f| %>
     
     <% if @meeting.errors.any? %>
     <div id="error_explanation">

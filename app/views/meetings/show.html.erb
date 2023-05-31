@@ -13,7 +13,7 @@
   <div class="row">
     <% @locations.each do |location| %>
         <div>
-          <strong><%= link_to location.name %></strong>
+          <strong><%= link_to location.name, user_meeting_location_path(current_user, @meeting, location) %></strong>
           <br><em><%= location.type %></em>
           <%= location.address %>
           <br>
@@ -24,3 +24,13 @@
         </div>
     <% end %>
 </div>
+
+<%= link_to "Edit meeting", edit_user_meeting_path(current_user, @meeting) %>
+<br>
+<%= link_to "Delete meeting", user_meeting_path(current_user, @meeting),
+    method: :delete,
+    data: { 
+        turbo_method: :delete, 
+        turbo_confirm: "Are you sure you want to delete #{@meeting.name}?"
+    } 
+%>

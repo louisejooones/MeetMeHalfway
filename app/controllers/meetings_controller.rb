@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
 
-    before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+    before_action :set_meeting, only: [:show, :edit, :create, :update, :destroy]
 
     def index
         @meetings = current_user.meetings
@@ -17,7 +17,7 @@ class MeetingsController < ApplicationController
     def create
         @meeting = current_user.meetings.new(meeting_params)
         if @meeting.save
-            redirect_to user_meetings_path
+            redirect_to user_meetings_path(current_user, @meeting)
         else
             render :new
         end
@@ -28,12 +28,12 @@ class MeetingsController < ApplicationController
 
     def update        
         @meeting.update(meeting_params)
-        redirect_to @meeting
+        redirect_to user_meeting_path(current_user, @meeting)
     end
 
     def destroy
         @meeting.destroy
-        redirect_to user_meetings_path
+        redirect_to user_meetings_path(current_user)
     end
 
     private

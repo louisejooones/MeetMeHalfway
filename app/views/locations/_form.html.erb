@@ -1,4 +1,4 @@
-<%= form_for [current_user, @meeting, @location] do |f| %>
+<%= form_with(model: [current_user, @meeting, @location]) do |f| %>
     
     <% if @location.errors.any? %>
     <div id="error_explanation">
@@ -37,13 +37,13 @@
     </div>
 
     <div class="field">
-        <%= f.label :distance_from_halfway, "Distance from Halfway" %>
-        <%= f.text_field :distance_from_halfway %>
+        <%= f.label :distance_from_halfway, "Distance from Halfway (metres)" %>
+        <%= f.number_field :distance_from_halfway %>
     </div>
 
     <div class="field">
-        <%= f.label :time_from_halfway, "Time from Halfway" %>
-        <%= f.text_field :time_from_halfway %>
+        <%= f.label :time_from_halfway, "Time from Halfway (minutes)" %>
+        <%= f.number_field :time_from_halfway %>
     </div>
 
     <%= f.submit "Submit", :class => "button" %>
