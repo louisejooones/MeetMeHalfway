@@ -1,0 +1,40 @@
+<%= form_with(model: [current_user, @meeting]) do |f| %>
+    
+    <% if @meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+      <ul>
+        <% @meeting.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+    <div class="field">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+        <%= f.label :place_type, "Place Type" %>
+        <%= f.text_field :place_type %>
+    </div>
+
+    <div class="field">
+        <%= f.label :transport_type, "Transport Type" %>
+        <%= f.text_field :transport_type %>
+    </div>
+
+    <div class="field">
+        <%= f.label :total_distance, "Total Distance" %>
+        <%= f.text_field :total_distance %>
+    </div>
+
+    <div class="field">
+        <%= f.label :total_time, "Total Time" %>
+        <%= f.text_field :total_time %>
+    </div>
+
+    <%= f.submit "Submit", :class => "button" %>
+<% end %>

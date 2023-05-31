@@ -30,6 +30,9 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Authenticate users through devise [https://github.com/heartcombo/devise]
+gem 'devise', '~> 4.9', '>= 4.9.2'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

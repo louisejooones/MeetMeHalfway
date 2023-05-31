@@ -1,1 +1,5 @@
-// Entry point for your Sass build
+@import "core/variables";
+@import "core/layout";
+@import "pages/pages";
+@import "components/buttons"; 
+

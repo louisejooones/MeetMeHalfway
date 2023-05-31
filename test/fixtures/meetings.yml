@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  place_type: MyString
+  transport_type: MyString
+  total_distance: 1
+  total_time: 1
+
+two:
+  user: two
+  name: MyString
+  place_type: MyString
+  transport_type: MyString
+  total_distance: 1
+  total_time: 1

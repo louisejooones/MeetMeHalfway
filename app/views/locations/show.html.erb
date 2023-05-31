@@ -1,0 +1,18 @@
+<h1><%= @location.name %></h1>
+  
+<br><br>
+
+<%= @location.type %><br>
+<%= @location.address %><br>
+<%= @location.distance_from_halfway %><br>
+<%= @location.time_from_halfway %>
+
+<%= link_to "Edit location", edit_user_meeting_location_path(current_user, @location.meeting, @location) %>
+<br>
+<%= link_to "Delete location", user_meeting_location_path(current_user, @location.meeting, @location),
+    method: :delete,
+    data: { 
+        turbo_method: :delete, 
+        turbo_confirm: "Are you sure you want to delete #{@location.name}?"
+    } 
+%>
