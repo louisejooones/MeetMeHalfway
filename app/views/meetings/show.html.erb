@@ -1,0 +1,36 @@
+<h1><%= @meeting.name %> Locations</h1>
+  <%= link_to "New Location", new_user_meeting_location_path(current_user, @meeting) %>
+  
+  <br><br>
+
+  <%= @meeting.place_type %><br>
+  <%= @meeting.transport_type %><br>
+  <%= @meeting.total_distance %><br>
+  <%= @meeting.total_time %>
+
+  <br><br>
+
+  <div class="row">
+    <% @locations.each do |location| %>
+        <div>
+          <strong><%= link_to location.name, user_meeting_location_path(current_user, @meeting, location) %></strong>
+          <br><em><%= location.type %></em>
+          <%= location.address %>
+          <br>
+          <%= location.distance_from_halfway %>
+          <br>
+          <%= location.time_from_halfway %>
+          <br>
+        </div>
+    <% end %>
+</div>
+
+<%= link_to "Edit meeting", edit_user_meeting_path(current_user, @meeting) %>
+<br>
+<%= link_to "Delete meeting", user_meeting_path(current_user, @meeting),
+    method: :delete,
+    data: { 
+        turbo_method: :delete, 
+        turbo_confirm: "Are you sure you want to delete #{@meeting.name}?"
+    } 
+%>
