@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
 
-    before_action :set_meeting, only: [:show, :edit, :create, :update, :destroy]
+    before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
     def index
         @meetings = current_user.meetings
