@@ -16,7 +16,7 @@ class LocationsController < ApplicationController
 
     def create
         @meeting.locations.create(location_params)
-        redirect_to user_meeting_path(location_params)
+        redirect_to user_meeting_path(current_user, @meeting)
     end
 
     def edit
