@@ -1,18 +1,16 @@
 module ApplicationHelper
-
-    def embedded_svg(filename, options = {})
-        assets = Rails.application.assets
-        asset = assets.find_asset(filename)
+  def embedded_svg(filename, options = {})
+    asset_path = File.join(Rails.root, 'app', 'assets', 'images', "#{filename}.svg")
     
-        if asset
-            file = asset.source.force_encoding("UTF-8")
-            doc = Nokogiri::HTML::DocumentFragment.parse file
-            svg = doc.at_css "svg"
-            svg["class"] = options[:class] if options[:class].present?
-        else
-            doc = "<!-- SVG #{filename} not found -->"
-        end
-    
-        raw doc
+    if File.exist?(asset_path)
+      file = File.read(asset_path)
+      doc = Nokogiri::HTML::DocumentFragment.parse(file)
+      svg = doc.at_css("svg")
+      svg["class"] = options[:class] if options[:class].present?
+    else
+      doc = "<!-- SVG #{filename} not found -->"
     end
+
+    raw doc
+  end
 end
