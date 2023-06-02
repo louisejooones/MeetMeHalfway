@@ -1,0 +1,21 @@
+<table class="striped bordered">
+  <tr>
+    <th>Meeting</th>
+    <th>Place Type</th>
+    <th>Transport Type</th>
+    <th>Total Distance</th>
+    <th>Total Time</th>
+  </tr>
+
+  <% @meetings.each do |meeting| %>
+      <tr>
+        <td><%= link_to meeting.name, results_path(current_user, meeting) %></td>
+        <td><%= meeting.place_type %></td>
+        <td><%= meeting.transport_type %></td>
+        <td><%= meeting.total_distance %></td>
+        <td><%= meeting.total_time %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to "New Meeting", search_path(:user => current_user) %>

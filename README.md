@@ -130,6 +130,16 @@ ___
 ### Day 3
 
 - More Heroku deployment
+- Search page skeleton
+- Results page skeleton
+
+
+### Day 4
+- Dashboard page skeleton
+- Header
+- Footer (https://simpleicons.org/, https://blog.cloud66.com/using-svgs-in-a-rails-stack)
+
+
 ___
 
 ## Challenges
