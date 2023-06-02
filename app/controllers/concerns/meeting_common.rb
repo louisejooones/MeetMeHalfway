@@ -2,7 +2,7 @@ module MeetingCommon
     extend ActiveSupport::Concern
   
     included do
-        before_action :set_meetings, only: [:search, :dashboard]
+        before_action :set_meetings, only: [:dashboard]
         before_action :build_meeting, only: [:search, :new, :create]
         before_action :set_meeting, only: [:results, :show, :edit, :update, :destroy]
     end
