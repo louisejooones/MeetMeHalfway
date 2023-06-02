@@ -1,3 +1,15 @@
-<h1>Welcome to the Dashboard Page</h1>
+<h1>Your Space</h1>
+
+<h2>Your information</h2>
+
+<ul>
+    <li>Name: <%= current_user.name %>
+    <li>Email: <%= current_user.email %>
+    <li>Number of meetings: <%= current_user.meetings.count %>
+</ul>
 
 <%= link_to 'Edit Profile', edit_user_registration_path %>
+
+<h2>Your meetings</h2>
+
+<%= render partial: "meetings/all" %>
