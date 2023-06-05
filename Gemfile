@@ -33,6 +33,9 @@ gem "jbuilder"
 # Authenticate users through devise [https://github.com/heartcombo/devise]
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
+# Use .env variables through dotenv-rails [https://github.com/bkeepers/dotenv]
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Use Google Maps API [https://github.com/zilverline/google-maps]
 gem 'google-maps'
 
