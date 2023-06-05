@@ -33,6 +33,9 @@ gem "jbuilder"
 # Authenticate users through devise [https://github.com/heartcombo/devise]
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
+# Use Google Maps API [https://github.com/zilverline/google-maps]
+gem 'google-maps'
+
 # Get icons from Font Awesome [https://fontawesome.com/docs/web/use-with/ruby-on-rails]
 # gem "font-awesome-sass", "~> 6.4.0"
 # gem 'font_awesome5_rails'

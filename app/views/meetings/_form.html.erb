@@ -1,28 +1,29 @@
 <%= form_with(model: [@user, @meeting]) do |f| %>
-        
-    <div class="field">
-      <%= f.label :name, "Name" %>
-      <%= f.text_field :name %>
-    </div>
+
+  <div id="address-container">
+    <%# Iterate over each location for the meeting %>
+    <%= f.fields_for :locations do |location_fields| %>
+      <%# Create an input field for the address %>
+      <div class="field">
+        <%= location_fields.label :address, "Location" %>
+        <%= location_fields.text_field :address %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, "Name this meeting?" %>
+    <%= f.text_field :name %>
+  </div>
 
   <div class="field">
     <%= f.label :place_type, "Place Type" %>
-    <%= f.text_field :place_type %>
+    <%= f.select :place_type, ['all'] %>
   </div>
 
   <div class="field">
     <%= f.label :transport_type, "Transport Type" %>
-    <%= f.text_field :transport_type %>
-  </div>
-
-  <div class="field">
-    <%= f.label :total_distance, "Total Distance" %>
-    <%= f.text_field :total_distance %>
-  </div>
-
-  <div class="field">
-    <%= f.label :total_time, "Total Time" %>
-    <%= f.text_field :total_time %>
+    <%= f.select :transport_type, ['driving'] %>
   </div>
 
   <%= f.submit "Submit", :class => "button" %>

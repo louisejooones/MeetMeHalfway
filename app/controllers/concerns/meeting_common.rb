@@ -10,9 +10,12 @@ module MeetingCommon
     private
 
     def build_meeting
-        puts "Building"
-        puts "user: #{@user}"
+        # Build a new meeting
         @meeting = @user.meetings.build
+        # Build two new locations for the form
+        2.times do
+            @meeting.locations.build
+        end
     end
   
     def set_meetings

@@ -15,9 +15,34 @@ class MeetingsController < ApplicationController
     end
 
     def create
-        @meeting = @user.meetings.new(meeting_params)
+        @meeting = @user.meetings.build(meeting_params)
         if @meeting.save
-            redirect_to results_path(user_id: @user.id, id: @meeting.id)
+            # Get the place ID of the first location from Google maps
+
+            # Get the place ID of the second location from Google maps
+
+            # Create the first location in the new meeting ID
+            @meeting.locations.create(address: params[:meeting][:first_address], type: "User inputted")
+            
+            # Create the second location in the new meeting ID
+            @meeting.locations.create(address: params[:meeting][:second_address], type: "User inputted")
+            redirect_to results_path(@user, @meeting)
+
+            # Find the coordinates of each location
+
+            # Find the halfway coordinates
+
+            # Get the place ID of the halfway point
+
+            # Create the halfway point as a location in the new meeting ID
+
+            # Find the route between the first location and the halfway point
+
+            # Find the route between the halfway point and the second location
+
+            # Send the distance between 
+
+
         else
             render :new
         end
@@ -39,6 +64,6 @@ class MeetingsController < ApplicationController
     private
 
         def meeting_params
-            params.require(:meeting).permit(:name, :place_type, :transport_type, :total_distance, :total_time)
+            params.require(:meeting).permit(:name, :place_type, :transport_type)
         end
 end
