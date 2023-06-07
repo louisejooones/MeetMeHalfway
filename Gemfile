@@ -39,6 +39,12 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Use Google Maps API [https://github.com/zilverline/google-maps]
 gem 'google-maps'
 
+# Use google maps service API [https://github.com/edwardsamuel/google-maps-services-ruby]
+gem 'google_maps_service'
+
+# Use HTTParty for external API requests [https://github.com/jnunemaker/httparty/tree/master]
+gem 'httparty'
+
 # Get icons from Font Awesome [https://fontawesome.com/docs/web/use-with/ruby-on-rails]
 # gem "font-awesome-sass", "~> 6.4.0"
 # gem 'font_awesome5_rails'

@@ -12,9 +12,9 @@ module MeetingCommon
     def build_meeting
         # Build a new meeting
         @meeting = @user.meetings.build
-        # Build two new locations for the form
-        2.times do
-            @meeting.locations.build
+        # Build two new locations so the form has two fields
+        2.times do |i|
+            @meeting.locations.build(name: "Location #{i}")
         end
     end
   
@@ -23,8 +23,14 @@ module MeetingCommon
     end
 
     def set_meeting
-        puts params
         @meeting = Meeting.find(params[:id]) 
+    end
+
+    # Method to send HTTParty requests and parse the response
+    def httpartytime(url)
+        response = HTTParty.get(url, format: :plain)
+        parsed_response = JSON.parse(response, symbolize_names: true)
+        result = parsed_response[:results].first
     end
 
   end

@@ -5,11 +5,14 @@
     <%= f.fields_for :locations do |location_fields| %>
       <%# Create an input field for the address %>
       <div class="field">
-        <%= location_fields.label :address, "Location" %>
+        <%= location_fields.label :address, "#{location_fields.object.name}" %>
         <%= location_fields.text_field :address %>
       </div>
     <% end %>
   </div>
+
+
+  <%# Button to add another location TODO %>
 
   <div class="field">
     <%= f.label :name, "Name this meeting?" %>

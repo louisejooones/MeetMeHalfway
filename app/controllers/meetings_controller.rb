@@ -14,35 +14,72 @@ class MeetingsController < ApplicationController
     def new
     end
 
+    # Method to calculate the average coordinates and store the result to 6dp
+    def calculate_average(array)
+        sum = array.sum(0.0) { |coord| BigDecimal(coord) }
+        average = sum / array.count
+        formatted_average = average.round(6).to_s
+    end
+
+
     def create
         @meeting = @user.meetings.build(meeting_params)
+
         if @meeting.save
-            # Get the place ID of the first location from Google maps
+            @lats = []
+            @lngs = []
+            @places = []
+            # Iterate over each location for the new meeting
+            meeting_params[:locations_attributes].each do |_, location_params|
+                address = location_params[:address]
+                location = @meeting.locations.find_by(address: address)
 
-            # Get the place ID of the second location from Google maps
+                location.type = "user inputted"
 
-            # Create the first location in the new meeting ID
-            @meeting.locations.create(address: params[:meeting][:first_address], type: "User inputted")
-            
-            # Create the second location in the new meeting ID
-            @meeting.locations.create(address: params[:meeting][:second_address], type: "User inputted")
-            redirect_to results_path(@user, @meeting)
+                # Get the place ID of the location from Google maps
+                place_id = Google::Maps.places(location.address).first.place_id
+                location.google_maps_place_id = place_id
 
-            # Find the coordinates of each location
+                location.save
+                
+                # Add the place details to the places array
+                place =  Google::Maps.place(place_id)
+                @places << place
 
-            # Find the halfway coordinates
+                # Find the lat and long coordinates and add them to the coordinate arrays
+                @lats << place.latitude
+                @lngs << place.longitude
+            end
+                
+            # Find the halfway coordinates between all the locations
+            halfway_coordinates = "#{calculate_average(@lats)},#{calculate_average(@lngs)}"
 
-            # Get the place ID of the halfway point
+            # Get the place ID of the halfway point from Google maps
+            results = httpartytime("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{halfway_coordinates}&key=#{ENV['GOOGLE_MAPS_API_KEY']}")
+            halfway_id = results[:place_id]
 
             # Create the halfway point as a location in the new meeting ID
+            halfway_point = @meeting.locations.create(google_maps_place_id: halfway_id, distance_from_halfway: 0, time_from_halfway: 0, type: 'halfway', address: halfway_coordinates)
 
-            # Find the route between the first location and the halfway point
+            # # Find the route between each location and the halfway point
+            # @routes = []
+            # meeting_params[:locations_attributes].each do |_, location_params|
+            #     address = location_params[:address]
+            #     location = @meeting.locations.find_by(address: address)
 
-            # Find the route between the halfway point and the second location
+            #     # Save the distance and duration between each location and the halfway point
+            #     route = Google::Maps.route(location.google_maps_place_id, halfway_point.google_maps_place_id)
+            #     @routes << route
 
-            # Send the distance between 
+            #     puts "................................"
+            #     puts route
+            #     puts "................................"
 
+            #     location.distance_from_halfway = route.distance.value
+            #     location.time_from_halfway = route.duration.value
+            # end
 
+            redirect_to results_path(@user, @meeting, @places, @lats, @lngs)
         else
             render :new
         end
@@ -64,6 +101,6 @@ class MeetingsController < ApplicationController
     private
 
         def meeting_params
-            params.require(:meeting).permit(:name, :place_type, :transport_type)
+            params.require(:meeting).permit(:name, :place_type, :transport_type, locations_attributes: [:id, :address])
         end
 end
