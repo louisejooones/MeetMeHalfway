@@ -133,26 +133,43 @@ ___
 - Search page skeleton
 - Results page skeleton
 
-
 ### Day 4
 - Dashboard page skeleton
-- Header
-- Footer (https://simpleicons.org/, https://blog.cloud66.com/using-svgs-in-a-rails-stack)
+- Header content
+- Footer content (https://simpleicons.org/, https://blog.cloud66.com/using-svgs-in-a-rails-stack)
 
+### Day 5
+- Google Maps API using Ruby Gem
+- Mapping functionality using HHTParty
+
+### Day 6
+- Putting the full user flow together from a search to the results
+
+### Day 7
+- Styling
+- Final redeployment
 
 ___
 
 ## Challenges
 
+- I have found some Gem documentation difficult to read and then apply to my work. It's not always clear with some Gems exactly how to use them, or if there are any behaviours/quirks to expect. Similarly, information on the internet is often outdated as technology moves so quickly. It's taken me longer than I would like to debug error codes coming from those gems too, as I'm less familiar with how they work.
+- I'm finding that my time estimates are still quite hit and miss. It's usually clear if something is "really quick" 
+- Day 6 was interrupted by repeated issues connecting to the internet and that has made me realise just how much I rely on that connectivity to move my thoughts onwards. 
 
 ___
 
 ## Wins
-
+- The freedom we had in this project meant I was able to invest some time into an idea that I've had for over a decade but never before had the skills to implement. I have really enjoyed bringing my vision to life, particularly in designing the pages, and finally figuring out the logic.
+- I made a point of tackling the more complicated requirements first: authentication and deployment. Knowing that I might struggle with these tasks, I didn't want to be panicking or running out of time later on. The unexpected benefit of this approach is that troubleshooting issues was much easier, as there were less 
+- Helped resolve Tom's issue, notified people about the right way to deploy.
 
 ___
 
 ## Other Learnings/Takeaways
+- At the beginning of a project, I like to write user stories for beyond MVP, so I have a sense of what I'm aiming for in the long term as well as over the course of the current working timeline. This is a double-edged sword, as it also means I can feel like I only made a small amount of progress towards the gold-plated version. I should (and do!) feel proud of the work I've achieved over the last week, and need to work on not letting the blue-sky vision overshadow this.
+- Looking back over my work, I started off really strongly, working through tickets quickly and seeing a lot of progress. My productivity dropped off in the second week, so I have been trying to understand why so I can avoid the same thing in the future.
+    - 
 
 
 ___
@@ -163,7 +180,8 @@ ___
 ___
 
 ## Future Improvements
-
+- Move from embedded Google Map to a more customised version
+- 
 
 
 ## Suggestions from Rails
