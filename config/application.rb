@@ -14,7 +14,7 @@ module MeetMeHalfway
     # Configuration for the application, engines, and railties goes here.
 
     # Load the environment variables from .env.production
-    Dotenv::Railtie.load
+    Dotenv::Railtie.load unless Rails.env.production?
 
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
