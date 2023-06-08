@@ -16,3 +16,13 @@
         </iframe>
     </div>
 </div>
+
+<div>
+    <%= link_to "Delete meeting", user_meeting_path(@user, @meeting),
+        method: :delete,
+        data: { 
+            turbo_method: :delete, 
+            turbo_confirm: "Are you sure you want to delete #{@meeting.name}?"
+        } 
+    %>
+</div>
