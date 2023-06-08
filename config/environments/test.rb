@@ -43,6 +43,8 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  config.google_maps_api_key = ENV['GOOGLE_MAPS_API_KEY']
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
