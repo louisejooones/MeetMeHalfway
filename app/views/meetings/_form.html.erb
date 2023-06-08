@@ -1,33 +1,63 @@
-<%= form_with(model: [@user, @meeting]) do |f| %>
+<%= form_with(model: [@user, @meeting], class: "my-4") do |f| %>
 
   <div id="address-container">
     <%# Iterate over each location for the meeting %>
     <%= f.fields_for :locations do |location_fields| %>
       <%# Create an input field for the address %>
-      <div class="field">
-        <%= location_fields.label :address, "#{location_fields.object.name}" %>
-        <%= location_fields.text_field :address %>
+      <div class="field form-group row mb-3">
+        <%= location_fields.label :address, "Location", class: "col-sm-3 col-lg-3 col-form-label" %>
+        <div class="col-sm-9 col-lg-9">
+          <%= location_fields.text_field :address, class: "form-control" %>
+        </div>
       </div>
     <% end %>
   </div>
 
 
   <%# Button to add another location TODO %>
+  <button type="button" id="add-location-btn" class="btn btn-secondary col-12 my-4">Add another location</button>
 
-  <div class="field">
-    <%= f.label :name, "Name this meeting?" %>
-    <%= f.text_field :name %>
+  <% if user_signed_in? %>
+    <div class="field form-group row mb-3">
+      <%= f.label :name, "Meeting Nickname", class: "col-sm-3 col-lg-3 col-form-label" %>
+      <div class="col-sm-9 col-lg-9">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field form-group row mb-3">
+    <%= f.label :place_type, "Place Type", class: "col-sm-3 col-lg-3 col-form-label" %>
+    <div class="col-sm-9 col-lg-9">
+      <%= f.select :place_type, ['all'], {}, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :place_type, "Place Type" %>
-    <%= f.select :place_type, ['all'] %>
+  <div class="field form-group row mb-3">
+    <%= f.label :transport_type, "Transport Type", class: "col-sm-3 col-lg-3 col-form-label" %>
+    <div class="col-sm-9 col-lg-9">
+      <%= f.select :transport_type, ['driving'], {}, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :transport_type, "Transport Type" %>
-    <%= f.select :transport_type, ['driving'] %>
-  </div>
-
-  <%= f.submit "Submit", :class => "button" %>
+  <%= f.submit "Meet Halfway!", class: "btn btn-primary col-12" %>
 <% end %>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#add-location-btn').click(function() {
+      let container = $('#address-container');
+      let index = container.children().length;
+
+      let locationField = $('<div class="field form-group row mb-3">' +
+        '<label class="col-sm-3 col-lg-3 col-form-label">Location</label>' +
+        '<div class="col-sm-9 col-lg-9">' +
+        '<input class="form-control" type="text" name="meeting[locations_attributes][' + index + '][address]">' +
+        '</div>' +
+        '</div>');
+
+      container.append(locationField);
+    });
+  });
+</script>

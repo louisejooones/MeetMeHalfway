@@ -1,18 +1,28 @@
 <h1>Search Results</h1>
 
-<div class="results-page">
-    <div class="results-container">
+<div style="height: 400px" class="row align-items-center my-5">
+    <div class="col-sm-4">
         <%= render partial: "meetings/results" %>
     </div>
 
-    <div class="results-container">
+    <div class="col-sm-8 h-100">
         <iframe
-            width="50%"
-            height="80%"
+            width="100%"
+            height="100%"
             frameborder="0" style="border:0"
             referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps/embed/v1/directions?<%= generate_parameters(@meeting) %>"
             allowfullscreen>
         </iframe>
     </div>
+</div>
+
+<div>
+    <%= link_to "Delete meeting", user_meeting_path(@user, @meeting),
+        method: :delete,
+        data: { 
+            turbo_method: :delete, 
+            turbo_confirm: "Are you sure you want to delete #{@meeting.name}?"
+        } 
+    %>
 </div>

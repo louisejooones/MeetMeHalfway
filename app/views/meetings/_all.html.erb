@@ -1,10 +1,10 @@
-<table class="striped bordered">
+<table class="striped bordered table">
   <tr>
-    <th>Meeting</th>
-    <th>Place Type</th>
-    <th>Transport Type</th>
-    <th>Total Distance</th>
-    <th>Total Time</th>
+    <th scope="col">Meeting</th>
+    <th scope="col">Place Type</th>
+    <th scope="col">Transport Type</th>
+    <th scope="col">Total Distance</th>
+    <th scope="col">Total Time</th>
   </tr>
 
   <% @meetings.each do |meeting| %>
@@ -12,10 +12,10 @@
         <td><%= link_to meeting.name, results_path(current_user, meeting) %></td>
         <td><%= meeting.place_type %></td>
         <td><%= meeting.transport_type %></td>
-        <td><%= meeting.total_distance %></td>
-        <td><%= meeting.total_time %></td>
+        <td><%= metres_to_miles(meeting.total_distance) %></td>
+        <td><%= seconds_to_time(meeting.total_time) %></td>
       </tr>
   <% end %>
 </table>
 
-<%= link_to "New Meeting", search_path(:user => current_user) %>
+<%= link_to "New Meeting", new_user_meeting_path(:user_id => current_user.id) %>
