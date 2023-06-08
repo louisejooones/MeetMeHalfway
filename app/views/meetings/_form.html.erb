@@ -1,12 +1,14 @@
-<%= form_with(model: [@user, @meeting]) do |f| %>
+<%= form_with(model: [@user, @meeting], class: "my-4") do |f| %>
 
   <div id="address-container">
     <%# Iterate over each location for the meeting %>
     <%= f.fields_for :locations do |location_fields| %>
       <%# Create an input field for the address %>
-      <div class="field">
-        <%= location_fields.label :address, "#{location_fields.object.name}" %>
-        <%= location_fields.text_field :address %>
+      <div class="field form-group row mb-3">
+        <%= location_fields.label :address, "Location", class: "col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= location_fields.text_field :address, class: "form-control" %>
+        </div>
       </div>
     <% end %>
   </div>
@@ -14,20 +16,28 @@
 
   <%# Button to add another location TODO %>
 
-  <div class="field">
-    <%= f.label :name, "Name this meeting?" %>
-    <%= f.text_field :name %>
+  <% if user_signed_in? %>
+    <div class="field form-group row mb-3">
+      <%= f.label :name, "Meeting Nickname", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field form-group row mb-3">
+    <%= f.label :place_type, "Place Type", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.select :place_type, ['all'], {}, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :place_type, "Place Type" %>
-    <%= f.select :place_type, ['all'] %>
+  <div class="field form-group row mb-3">
+    <%= f.label :transport_type, "Transport Type", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.select :transport_type, ['driving'], {}, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :transport_type, "Transport Type" %>
-    <%= f.select :transport_type, ['driving'] %>
-  </div>
-
-  <%= f.submit "Submit", :class => "button" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

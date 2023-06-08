@@ -11,40 +11,40 @@
     </div>
   <% end %>
     
-    <div class="field">
+    <div class="field form-group row mb-3">
         <%= f.label :name, "Name" %>
         <%= f.text_field :name %>
     </div>
 
-    <div class="field">
+    <div class="field form-group row mb-3">
         <%= f.label :type, "Location Type" %>
         <%= f.text_field :type %>
     </div>
 
-    <div class="field">
+    <div class="field form-group row mb-3">
         <%= f.label :address, "Address" %>
-        <%= f.text_field :address %>
+        <%= f.text_field :address, class: "form-control" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group row mb-3">
         <%= f.label :latitude, "Latitude" %>
-        <%= f.text_field :latitude %>
+        <%= f.text_field :latitude, class: "form-control" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group row mb-3">
         <%= f.label :longitude, "Longitude" %>
-        <%= f.text_field :longitude %>
+        <%= f.text_field :longitude, class: "form-control" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group row mb-3">
         <%= f.label :distance_from_halfway, "Distance from Halfway (metres)" %>
-        <%= f.number_field :distance_from_halfway %>
+        <%= f.number_field :distance_from_halfway, class: "form-control" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group row mb-3">
         <%= f.label :time_from_halfway, "Time from Halfway (minutes)" %>
-        <%= f.number_field :time_from_halfway %>
+        <%= f.number_field :time_from_halfway, class: "form-control" %>
     </div>
 
-    <%= f.submit "Submit", :class => "button" %>
+    <%= f.submit "Submit", class: "button" %>
 <% end %>
