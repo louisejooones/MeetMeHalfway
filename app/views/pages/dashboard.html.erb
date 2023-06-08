@@ -1,15 +1,27 @@
 <h1>Your Space</h1>
 
-<h2>Your information</h2>
+<div class="row align-items-start my-5">
 
-<ul>
-    <li>Name: <%= current_user.name %>
-    <li>Email: <%= current_user.email %>
-    <li>Number of meetings: <%= current_user.meetings.count %>
-</ul>
+    <div class="col-sm-4">
 
-<%= link_to 'Edit Profile', edit_user_registration_path %>
+        <h2>Your information</h2>
 
-<h2>Your meetings</h2>
+        <ul>
+            <li>Name: <%= current_user.name %>
+            <li>Email: <%= current_user.email %>
+            <li>Number of meetings: <%= current_user.meetings.count %>
+        </ul>
 
-<%= render partial: "meetings/all" %>
+        <%= link_to 'Edit Profile', edit_user_registration_path %>
+
+    </div>
+
+    <div class="col-sm-8">
+
+        <h2>Your meetings</h2>
+
+        <%= render partial: "meetings/all" %>
+
+    </div>
+
+</div>
