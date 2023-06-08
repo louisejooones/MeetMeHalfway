@@ -6,11 +6,18 @@
 
         <h2>Your information</h2>
 
-        <ul>
-            <li>Name: <%= current_user.name %>
-            <li>Email: <%= current_user.email %>
-            <li>Number of meetings: <%= current_user.meetings.count %>
-        </ul>
+        <p>
+            <br>Hi, <%= current_user.name %>!
+            <br>Your email: <%= current_user.email %>
+            <br>You've been meeting halfway for <%= member_time %>
+            <br>
+            <br>You've arranged <%= current_user.meetings.count %> meetings with:
+                <ul>
+                    <li><%= current_user.meetings.joins(:locations).where.not(locations: { type: "halfway" }).count %> locations</li>
+                    <li><%= metres_to_miles(current_user.meetings.sum(:total_distance) )%></li>
+                    <li><%= seconds_to_time(current_user.meetings.sum(:total_time)) %></li>
+                </ul>
+        </p>
 
         <%= link_to 'Edit Profile', edit_user_registration_path %>
 

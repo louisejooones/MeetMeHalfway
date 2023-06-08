@@ -61,23 +61,26 @@ class MeetingsController < ApplicationController
             # Create the halfway point as a location in the new meeting ID
             halfway_point = @meeting.locations.create(google_maps_place_id: halfway_id, distance_from_halfway: 0, time_from_halfway: 0, type: 'halfway', address: halfway_coordinates)
 
-            # # Find the route between each location and the halfway point
-            # @routes = []
-            # meeting_params[:locations_attributes].each do |_, location_params|
-            #     address = location_params[:address]
-            #     location = @meeting.locations.find_by(address: address)
+            # Find the route between each location and the halfway point
+            @routes = []
+            meeting_params[:locations_attributes].each do |_, location_params|
+                address = location_params[:address]
+                location = @meeting.locations.find_by(address: address)
 
-            #     # Save the distance and duration between each location and the halfway point
-            #     route = Google::Maps.route(location.google_maps_place_id, halfway_point.google_maps_place_id)
-            #     @routes << route
+                # Save the distance and duration between each location and the halfway point
+                route = httpartytime("https://maps.googleapis.com/maps/api/distancematrix/json?origins=place_id:#{location.google_maps_place_id}&destinations=place_id:#{halfway_id}&units=imperial&key=#{Rails.application.config.google_maps_api_key}")
+                @routes << route
 
-            #     puts "................................"
-            #     puts route
-            #     puts "................................"
+                location.distance_from_halfway = route[:distance][:value]
+                location.time_from_halfway = route[:duration][:value]
 
-            #     location.distance_from_halfway = route.distance.value
-            #     location.time_from_halfway = route.duration.value
-            # end
+                location.save
+            end
+
+            @meeting.total_distance = @meeting.locations.sum(:distance_from_halfway)
+            @meeting.total_time = @meeting.locations.sum(:time_from_halfway)
+
+            @meeting.save
 
             redirect_to results_path(@user, @meeting, @places, @lats, @lngs)
         else

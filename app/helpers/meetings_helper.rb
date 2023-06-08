@@ -33,4 +33,45 @@ module MeetingsHelper
 
     end
 
+    # Method to calculate the total distance in miles
+    def metres_to_miles(metres)
+        metres_per_mile = 1609.344
+        if metres
+            miles = metres.to_f / metres_per_mile
+            rounded_miles = miles.round
+            "#{rounded_miles} miles"
+        else
+            "not found"
+        end
+        
+    end
+
+    # Method to calculate the total time from seconds to days/hours/minutes
+    def seconds_to_time(seconds)
+        minutes_per_hour = 60
+        hours_per_day = 24
+      
+        if seconds
+            if seconds < 1.minute
+                duration = "#{seconds} seconds"
+            elsif seconds < 1.hour
+                minutes = (seconds / 1.minute).to_i
+                duration = "#{minutes} minute#{minutes > 1 ? 's' : ''}"
+            elsif seconds < 1.day
+                hours = (seconds / 1.hour).to_i
+                minutes = ((seconds % 1.hour) / 1.minute).to_i
+                duration = "#{hours} hour#{hours > 1 ? 's' : ''} and #{minutes} minute#{minutes > 1 ? 's' : ''}"
+            else
+                days = (seconds / 1.day).to_i
+                hours = ((seconds % 1.day) / 1.hour).to_i
+                minutes = (((seconds % 1.day) % 1.hour) / 1.minute).to_i
+                duration = "#{days} day#{days > 1 ? 's' : ''}, #{hours} hour#{hours > 1 ? 's' : ''}, and #{minutes} minute#{minutes > 1 ? 's' : ''}"
+            end
+        else
+            duration = "not found"
+        end
+      
+        duration
+    end
+
 end
