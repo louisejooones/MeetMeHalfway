@@ -68,6 +68,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    autoprefixer-rails (10.4.13.0)
+      execjs (~> 2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -96,9 +98,29 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
+    execjs (2.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    google-maps (3.0.7)
+      hashie (~> 4.1, >= 4.1.0)
+      httpclient (~> 2.7, >= 2.7.1)
+      multi_json (>= 1.15)
+      ruby-hmac (~> 0.4.0)
+    google_maps_service (0.4.2)
+      hurley (~> 0.1)
+      multi_json (~> 1.11)
+      retriable (~> 2.0)
+    hashie (4.1.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    httpclient (2.8.3)
+    hurley (0.2)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -124,6 +146,8 @@ GEM
     mini_portile2 (2.8.2)
     minitest (5.18.0)
     msgpack (1.7.1)
+    multi_json (1.15.0)
+    multi_xml (0.6.0)
     net-imap (0.3.4)
       date
       net-protocol
@@ -184,7 +208,9 @@ GEM
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    retriable (2.1.0)
     rexml (3.2.5)
+    ruby-hmac (0.4.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
@@ -232,11 +258,16 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  autoprefixer-rails
   bootsnap
   capybara
   cssbundling-rails
   debug
   devise (~> 4.9, >= 4.9.2)
+  dotenv-rails
+  google-maps
+  google_maps_service
+  httparty
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

@@ -9,8 +9,7 @@ class PagesController < ApplicationController
   end
 
   def results
-    puts "user for results is #{@user}"
-    puts "meeting for results is #{@meeting}"
+    
   end
 
   def dashboard

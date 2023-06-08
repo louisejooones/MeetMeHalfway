@@ -1,3 +1,18 @@
-<h1>Search Results for <%= @meeting.name %></h1>
+<h1>Search Results</h1>
 
-<%= render partial: "meetings/results" %>
+<div class="results-page">
+    <div class="results-container">
+        <%= render partial: "meetings/results" %>
+    </div>
+
+    <div class="results-container">
+        <iframe
+            width="50%"
+            height="80%"
+            frameborder="0" style="border:0"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/directions?<%= generate_parameters(@meeting) %>"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
