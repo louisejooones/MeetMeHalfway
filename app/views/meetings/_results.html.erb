@@ -1,5 +1,7 @@
-<p><%= @user.name %>: 
-<%= @meeting.name %></p>
+<% if user_signed_in? %>
+    <p><%= @user.name %>: 
+    <%= @meeting.name %></p>
+<% end %>
 
 <ul>
     <li>Place type: <%= @meeting.place_type %></li>

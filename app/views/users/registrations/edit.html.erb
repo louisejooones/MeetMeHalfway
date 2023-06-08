@@ -1,48 +1,61 @@
-<h2>Edit my account</h2>
+<h1>Edit my account</h1>
+<br>
+<div class="mx-auto col-10 col-md-8 col-lg-6 my-4">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "my-6 w-100 mx-auto") do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+    <div class="field form-group row mb-3">
+      <%= f.label :name, class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+      </div>
+    </div>
+    
+    <div class="field form-group row mb-3">
+      <%= f.label :email, class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently awaiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently awaiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="field form-group row my-3">
+      <%= f.label :password, class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <i>(leave blank if you don't want to change it)</i>
+      <% if @minimum_password_length %>
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field form-group row mb-3">
+      <%= f.label :password_confirmation, class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="field form-group row my-5">
+      <%= f.label :current_password, class: "col-sm-4 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+      <i>(we need your current password to confirm your changes)</i>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update", class: "btn btn-primary col-12 mb-4"  %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+  <h3>Delete my account</h3>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <div>Want to remove your account and all the data associated with it?<br><i>(Warning! This cannot be undone.)</i> <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-secondary col-12 mb-4"  %></div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Delete my account</h3>
-
-<div>Want to remove your account and all the data associated with it? <i>(Warning! This cannot be undone.)</i> <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back %>
+</div>

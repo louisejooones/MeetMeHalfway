@@ -5,8 +5,8 @@
     <%= f.fields_for :locations do |location_fields| %>
       <%# Create an input field for the address %>
       <div class="field form-group row mb-3">
-        <%= location_fields.label :address, "Location", class: "col-sm-2 col-form-label" %>
-        <div class="col-sm-10">
+        <%= location_fields.label :address, "Location", class: "col-sm-3 col-lg-3 col-form-label" %>
+        <div class="col-sm-9 col-lg-9">
           <%= location_fields.text_field :address, class: "form-control" %>
         </div>
       </div>
@@ -18,26 +18,26 @@
 
   <% if user_signed_in? %>
     <div class="field form-group row mb-3">
-      <%= f.label :name, "Meeting Nickname", class: "col-sm-2 col-form-label" %>
-      <div class="col-sm-10">
+      <%= f.label :name, "Meeting Nickname", class: "col-sm-3 col-lg-3 col-form-label" %>
+      <div class="col-sm-9 col-lg-9">
         <%= f.text_field :name, class: "form-control" %>
       </div>
     </div>
   <% end %>
 
   <div class="field form-group row mb-3">
-    <%= f.label :place_type, "Place Type", class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
+    <%= f.label :place_type, "Place Type", class: "col-sm-3 col-lg-3 col-form-label" %>
+    <div class="col-sm-9 col-lg-9">
       <%= f.select :place_type, ['all'], {}, class: "form-control" %>
     </div>
   </div>
 
   <div class="field form-group row mb-3">
-    <%= f.label :transport_type, "Transport Type", class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
+    <%= f.label :transport_type, "Transport Type", class: "col-sm-3 col-lg-3 col-form-label" %>
+    <div class="col-sm-9 col-lg-9">
       <%= f.select :transport_type, ['driving'], {}, class: "form-control" %>
     </div>
   </div>
 
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= f.submit "Submit", class: "btn btn-primary col-12" %>
 <% end %>

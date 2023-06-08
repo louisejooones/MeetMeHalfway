@@ -29,7 +29,7 @@ module MeetingsHelper
         end
 
         # Build the directions parameters string
-        parameters = "key=#{Rails.application.config.google_maps_api_key}&origin=place_id:#{place_ids.first}&destination=place_id:#{place_ids.last}&waypoints=#{waypoints.join('|')}&center=#{halfway_coordinates}"
+        parameters = "key=#{Rails.application.config.google_maps_api_key}&origin=place_id:#{place_ids.first}&destination=place_id:#{place_ids.last}&waypoints=#{waypoints.join('|')}"
 
     end
 
