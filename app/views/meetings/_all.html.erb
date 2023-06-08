@@ -18,4 +18,4 @@
   <% end %>
 </table>
 
-<%= link_to "New Meeting", search_path(:user => current_user) %>
+<%= link_to "New Meeting", new_user_meeting_path(:user_id => current_user.id) %>

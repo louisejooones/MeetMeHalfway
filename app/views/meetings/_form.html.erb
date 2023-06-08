@@ -15,6 +15,7 @@
 
 
   <%# Button to add another location TODO %>
+  <button type="button" id="add-location-btn" class="btn btn-secondary col-12 my-4">Add another location</button>
 
   <% if user_signed_in? %>
     <div class="field form-group row mb-3">
@@ -39,5 +40,24 @@
     </div>
   </div>
 
-  <%= f.submit "Submit", class: "btn btn-primary col-12" %>
+  <%= f.submit "Meet Halfway!", class: "btn btn-primary col-12" %>
 <% end %>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#add-location-btn').click(function() {
+      let container = $('#address-container');
+      let index = container.children().length;
+
+      let locationField = $('<div class="field form-group row mb-3">' +
+        '<label class="col-sm-3 col-lg-3 col-form-label">Location</label>' +
+        '<div class="col-sm-9 col-lg-9">' +
+        '<input class="form-control" type="text" name="meeting[locations_attributes][' + index + '][address]">' +
+        '</div>' +
+        '</div>');
+
+      container.append(locationField);
+    });
+  });
+</script>
