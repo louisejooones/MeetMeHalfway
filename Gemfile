@@ -45,6 +45,9 @@ gem 'google_maps_service'
 # Use HTTParty for external API requests [https://github.com/jnunemaker/httparty/tree/master]
 gem 'httparty'
 
+# Autoprefixer for CSS [https://github.com/ai/autoprefixer-rails]
+gem "autoprefixer-rails"
+
 # Get icons from Font Awesome [https://fontawesome.com/docs/web/use-with/ruby-on-rails]
 # gem "font-awesome-sass", "~> 6.4.0"
 # gem 'font_awesome5_rails'
