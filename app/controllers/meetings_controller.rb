@@ -55,7 +55,7 @@ class MeetingsController < ApplicationController
             halfway_coordinates = "#{calculate_average(@lats)},#{calculate_average(@lngs)}"
 
             # Get the place ID of the halfway point from Google maps
-            results = httpartytime("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{halfway_coordinates}&key=#{ENV['GOOGLE_MAPS_API_KEY']}")
+            results = httpartytime("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{halfway_coordinates}&key=#{Rails.application.config.google_maps_api_key}")
             halfway_id = results[:place_id]
 
             # Create the halfway point as a location in the new meeting ID
