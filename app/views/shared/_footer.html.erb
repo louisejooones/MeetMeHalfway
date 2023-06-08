@@ -1,20 +1,26 @@
-<div class="footer">
-    <ul>
-        <li>Made with ❤️ by Louise Jones, 2023</li>
-        <li>
-            <%= link_to "https://linkedin.com/in/louisejones94" do %>
-                <%= embedded_svg('linkedin', class: "social-img") %>
-                <%= "LinkedIn" %>
-            <% end %>
-        </li>
-        <li>
-            <%= link_to "https://github.com/louisejones94/MeetMeHalfway" do %>
-                <%= embedded_svg('github', class: "social-img") %>
-                <%= "Repo" %>
-            <% end %>
-        </li>
-        <li>
-            <a href="https://www.flaticon.com/free-icons/meeting-point" title="meeting point icons">Icon from Flaticon</a>
-        </li>
-    </ul>
-</div>
+<footer class="footer mt-auto bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="mb-4">
+      <a class="btn btn-outline-light btn-floating m-1" href="https://linkedin.com/in/louisejones94" role="button">
+        <%= embedded_svg('linkedin', class: "social-img") %>
+      </a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/louisejones94/MeetMeHalfway" role="button">
+        <%= embedded_svg('github', class: "social-img") %>
+      </a>
+    </section>
+
+
+    <section class="mb-4">
+      <p>
+        Icon by <a href="https://www.flaticon.com/free-icons/meeting-point" title="meeting point icons">Flaticon</a> | 
+        Background image by <a href="https://www.freepik.com/free-photo/young-couple-car-trip_3920146.htm#query=road%20trip&position=8&from_view=search&track=ais">Freepik</a>
+      </p>
+    </section>
+
+  </div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    Made with ❤️ by Louise Jones © 2023 
+  </div>
+</footer>

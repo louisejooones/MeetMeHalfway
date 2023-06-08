@@ -30,7 +30,13 @@ module MeetingCommon
     def httpartytime(url)
         response = HTTParty.get(url, format: :plain)
         parsed_response = JSON.parse(response, symbolize_names: true)
-        result = parsed_response[:results].first
+        if parsed_response.key?(:results)
+            result = parsed_response[:results].first
+        elsif parsed_response.key?(:rows)
+            result = parsed_response[:rows][0][:elements][0]
+        else
+            result = nil
+        end
     end
 
   end

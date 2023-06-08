@@ -1,9 +1,11 @@
-<p><%= @user.name %>: 
-<%= @meeting.name %></p>
+<% if user_signed_in? %>
+    <p><%= @user.name %>: 
+    <%= @meeting.name %></p>
+<% end %>
 
 <ul>
     <li>Place type: <%= @meeting.place_type %></li>
     <li>Transport type: <%= @meeting.transport_type %></li>
-    <li>Total distance: <%= @meeting.total_distance %></li>
-    <li>Total time: <%= @meeting.total_time %>
+    <li>Total distance: <%= metres_to_miles(@meeting.total_distance) %></li>
+    <li>Total time: <%= seconds_to_time(@meeting.total_time) %>
 </ul>
