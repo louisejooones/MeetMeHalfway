@@ -2,7 +2,7 @@ require 'google_maps_service'
 
 # Set up global parameters
 GoogleMapsService.configure do |config|
-  config.key = ENV['GOOGLE_MAPS_API_KEY']
+  config.key = Rails.application.config.google_maps_api_key
   config.retry_timeout = 20
   config.queries_per_second = 10
 end
