@@ -41,7 +41,7 @@ module MeetingsHelper
             rounded_miles = miles.round
             "#{rounded_miles} miles"
         else
-            "not found"
+            "Not found"
         end
         
     end
@@ -68,7 +68,7 @@ module MeetingsHelper
                 duration = "#{days} day#{days > 1 ? 's' : ''}, #{hours} hour#{hours > 1 ? 's' : ''}, and #{minutes} minute#{minutes > 1 ? 's' : ''}"
             end
         else
-            duration = "not found"
+            duration = "Not found"
         end
       
         duration
