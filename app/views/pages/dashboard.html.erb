@@ -14,8 +14,8 @@
             <br>You've arranged <%= current_user.meetings.count %> meetings with:
                 <ul>
                     <li><%= current_user.meetings.joins(:locations).where.not(locations: { type: "halfway" }).count %> locations</li>
-                    <li><%= metres_to_miles(current_user.meetings.sum(:total_distance) )%></li>
-                    <li><%= seconds_to_time(current_user.meetings.sum(:total_time)) %></li>
+                    <li><%= metres_to_miles(current_user.meetings.sum(:total_distance) )%> of driving</li>
+                    <li><%= seconds_to_time(current_user.meetings.sum(:total_time)) %> of driving</li>
                 </ul>
         </p>
 
