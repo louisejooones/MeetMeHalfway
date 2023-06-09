@@ -182,7 +182,8 @@ ___
 ## Bugs
 - The homepage form fields overlap their labels just before hitting the small screen breakpoint.
 - I still have unused views that I created when I was originally testing my MVCs. Some of those are likely not working currently. I have kept them so that I can use them as a skeleton/reference when developing them in the future.
-- There is no validation on the meeting and location model at present
+- There is no validation on the meeting and location model at present.
+- I was unable to get a background image working for the homepage.
 
 ___
 
