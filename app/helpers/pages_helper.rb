@@ -5,18 +5,12 @@ module PagesHelper
         duration_in_seconds = Time.now - current_user.created_at
 
         # Convert the duration to the appropriate units (days, months, years)
-        if duration_in_seconds < 1.minute
-            duration = "less than a minute"
-        elsif duration_in_seconds < 1.hour
-            duration = "#{(duration_in_seconds / 1.minute).to_i} minutes"
-        elsif duration_in_seconds < 1.day
-            duration = "#{(duration_in_seconds / 1.hour).to_i} hours"
-        elsif duration_in_seconds < 1.month
-            duration = "#{(duration_in_seconds / 1.day).to_i} days"
-        elsif duration_in_seconds < 1.year
-            duration = "#{(duration_in_seconds / 1.month).to_i} months"
+        string = seconds_to_time(duration_in_seconds)
+        result = string.match(/(.*?) and/)
+        if result
+            extracted_characters = result[1]
         else
-            duration = "#{(duration_in_seconds / 1.year).to_i} years"
+            extracted_characters=string
         end
     end
 
