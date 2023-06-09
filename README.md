@@ -16,12 +16,11 @@ ___
 ## Technologies Used
 
 
-- Ruby
-    - Front end interactivity
-- Rails
-    - Back end 
-- CSS
-    - Flexbox
+- Front end
+    - Ruby
+    - Bootstrap
+- Back end
+    - Rails
 - VS Code
     - Text editing
     - Accessing Git via CLI
@@ -32,6 +31,8 @@ ___
     - Deployment
 - Ruby Gems
     - Devise: User authentication
+    - Google Maps: external API calls
+    - HTTParty: external API calls
 
 ___
 
@@ -180,6 +181,7 @@ ___
 
 ## Bugs
 - The homepage form fields overlap their labels just before hitting the small screen breakpoint.
+- I still have unused views that I created when I was originally testing my MVCs. Some of those are likely not working currently. I have kept them so that I can use them as a skeleton/reference when developing them in the future.
 
 ___
 
